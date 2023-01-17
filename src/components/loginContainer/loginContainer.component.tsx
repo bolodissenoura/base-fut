@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as mui from "@mui/material";
 import * as S from "./loginContainer.styles";
+import Link from "next/link";
 
 export function LoginContainer() {
   return (
@@ -45,9 +46,18 @@ export function LoginContainer() {
           </mui.Button>
           <mui.Grid container>
             <mui.Grid item xs>
-              <mui.Link href="#" color="#1635ff" variant="body2">
-                Esqueceu a senha?
-              </mui.Link>
+              <Link href="/login" color="#1635ff">
+                <mui.Typography variant="body2">
+                  Esqueceu a senha?
+                </mui.Typography>
+              </Link>
+            </mui.Grid>
+            <mui.Grid item xs>
+              <Link href="/register" color="#1635ff">
+                <mui.Typography variant="body2">
+                  Não tem uma conta ?
+                </mui.Typography>
+              </Link>
             </mui.Grid>
           </mui.Grid>
         </mui.Box>

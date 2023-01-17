@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as mui from "@mui/material";
 import * as S from "./registerContainer.styles";
+import Link from "next/link";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -58,6 +59,13 @@ export function RegisterContainer() {
           <mui.Typography component="h1" variant="h5">
             Cadastrar como Jogador
           </mui.Typography>
+          <mui.Typography
+            component="h2"
+            variant="h6"
+            style={{ opacity: 0.7, fontSize: 16 }}
+          >
+            Busque clubes e mostre sua garra com vídeos, fotos e passagens.{" "}
+          </mui.Typography>
           <mui.Box
             component="form"
             onSubmit={() => console.log("arroz")}
@@ -94,9 +102,11 @@ export function RegisterContainer() {
             </mui.Button>
             <mui.Grid container>
               <mui.Grid item xs>
-                <mui.Link href="#" color="#1635ff" variant="body2">
-                  Já tem uma conta?
-                </mui.Link>
+                <Link href="/login" color="#1635ff">
+                  <mui.Typography variant="body2">
+                    Já tem uma conta?
+                  </mui.Typography>
+                </Link>
               </mui.Grid>
             </mui.Grid>
           </mui.Box>
@@ -104,6 +114,13 @@ export function RegisterContainer() {
         <TabPanel value={value} index={1}>
           <mui.Typography component="h1" variant="h5">
             Cadastrar como Clube
+          </mui.Typography>
+          <mui.Typography
+            component="h2"
+            variant="h6"
+            style={{ opacity: 0.7, fontSize: 16 }}
+          >
+            Busque jogadores mostrando vantagens de vestir a sua camisa !
           </mui.Typography>
           <mui.Box
             component="form"
@@ -141,6 +158,7 @@ export function RegisterContainer() {
               id="password"
               autoComplete="current-password"
             />
+
             <mui.Button
               type="submit"
               fullWidth
@@ -149,11 +167,20 @@ export function RegisterContainer() {
             >
               Cadastrar
             </mui.Button>
+            <mui.Typography
+              component="h2"
+              variant="h6"
+              style={{ opacity: 0.7, fontSize: 16 }}
+            >
+              **Entraremos em contato para validar a sua conta como clube
+            </mui.Typography>
             <mui.Grid container>
               <mui.Grid item xs>
-                <mui.Link href="#" color="#1635ff" variant="body2">
-                  Já tem uma conta?
-                </mui.Link>
+                <Link href="/login" color="#1635ff">
+                  <mui.Typography variant="body2">
+                    Já tem uma conta?
+                  </mui.Typography>
+                </Link>
               </mui.Grid>
             </mui.Grid>
           </mui.Box>
