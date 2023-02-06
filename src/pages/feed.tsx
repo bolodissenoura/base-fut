@@ -39,13 +39,11 @@ export default function Feed() {
       <main>
         {/* @ts-ignore */}
         {Object.keys(user).length !== 0 ? <>
-          <p>{user?.email}</p>
+          <h1 className="mx-auto text-lg dark:text-blue-800">Bem vindo {user?.email}!</h1>
           <button onClick={() => signOutUser()}>Logout</button>
         </>
           :
-          <>
-            <NotAllowedPage />
-          </>
+          <NotAllowedPage />
         }
       </main>
     </>

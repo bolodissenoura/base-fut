@@ -12,7 +12,7 @@ export default function NotAllowedPage() {
                         </h2 >
                         <p className="text-2xl font-semibold md:text-3xl" > Você ainda não pode acessar esta página!</p>
                         < p className="mt-4 mb-8 dark:text-gray-400" > Mas não se preocupe, faça login com sua conta e deixaremos você entrar :)</p >
-                        <Link rel="noopener noreferrer" href="/" className="px-8 py-3 font-semibold rounded dark:bg-violet-400 dark:text-gray-900" > Ir ao Login</Link >
+                        <Link rel="noopener noreferrer" href="/" className="px-8 py-3 font-semibold rounded bg-blue-700 text-white" > Ir ao Login</Link >
                     </div >
                 </div >
             </section >

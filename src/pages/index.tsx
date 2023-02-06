@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import router from "next/router";
 
 import { supabase } from "../server/supabase"
 
