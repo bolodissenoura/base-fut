@@ -1,8 +1,33 @@
 import Head from "next/head";
 import Image from "next/image";
+import { supabase } from "../server/supabase"
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import NotAllowedPage from "@/components/notAllowedPage";
 
 export default function Feed() {
-  
+  const router = useRouter();
+
+
+  const [user, setUser]: any = useState({})
+
+  useEffect(() => {
+    async function getUserData() {
+      await supabase.auth.getUser().then((value) => {
+        if (value.data?.user) {
+          console.log(value.data.user)
+          setUser(value.data.user)
+        }
+      })
+    }
+    getUserData()
+  }, [])
+
+  async function signOutUser() {
+    const { error } = await supabase.auth.signOut()
+    router.push("/")
+  }
+
   return (
     <>
       <Head>
@@ -12,7 +37,16 @@ export default function Feed() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-       <h1 className="mx-auto">feed</h1>
+        {/* @ts-ignore */}
+        {Object.keys(user).length !== 0 ? <>
+          <p>{user?.email}</p>
+          <button onClick={() => signOutUser()}>Logout</button>
+        </>
+          :
+          <>
+            <NotAllowedPage />
+          </>
+        }
       </main>
     </>
   );
