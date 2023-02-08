@@ -13,27 +13,18 @@ export default function Feed() {
     async function getUserData() {
       await supabase.auth.getUser().then((value) => {
         if (value.data?.user) {
-          console.log(value.data.user)
           setUser(value.data.user)
         }
       })
     }
     getUserData()
+    user.length !== 0 ? console.log('⚡️ already auth') : router.push("/login");
   }, [])
 
-  function goToLoginPage() {
+  async function signOutUser() {
+    await supabase.auth.signOut()
     router.push("/login")
   }
-
-  async function signOutUser() {
-    supabase.auth.signOut()
-    goToLoginPage()
-  }
-
-  useEffect(() => {
-    Object.keys(user).length !== 0 ? console.log('⚡️ already auth') : goToLoginPage()
-  })
-
 
   return (
     <>
@@ -45,7 +36,7 @@ export default function Feed() {
       </Head>
       <main>
         {/* @ts-ignore */}
-        {Object.keys(user).length !== 0 ? <>
+        {user.length !== 0 ? <>
           <h1 className="mx-auto text-lg dark:text-blue-800">Bem vindo {user?.email}!</h1>
           <button onClick={() => signOutUser()}>Logout</button>
         </>
