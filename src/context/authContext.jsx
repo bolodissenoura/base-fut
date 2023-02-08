@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     }
     loadUserFromCookies();
   }, []);
-  async function getUserData() {}
+
   const login = async (email, password) => {
     const { data: token } = await supabase.auth.getUser().then((value) => {
       if (value.data?.user) {
@@ -50,8 +50,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated: !!user, user, login, loading, logout }}
-    >
+      value={{ isAuthenticated: !!user, user, login, loading, logout }}>
       {children}
     </AuthContext.Provider>
   );
